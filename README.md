@@ -1,18 +1,21 @@
-# Welcome to your project
+# WEB BASED LIBRARY FOR COMPUTING STUDENTS IN GHANA
 
-## Project info
+## Project Info
 
-**URL**: 
+A web-based library platform designed specifically for computing students in Ghana. This project provides an online resource hub for accessing, searching, and managing computing-related materials.
+
+**Project Base Directory:**  
+`c:\Users\kee\Desktop\iykeLib_webbased_Library`
 
 ## How can I edit this code?
 
-There are several ways of editing your application.
+There are several ways to edit and contribute to this application:
 
-Working locally
+### Working Locally
 
 Edit the code using your preferred IDE or editor. Changes made locally can be committed and pushed to your remote repository.
 
-**Use your preferred IDE**
+#### Use your preferred IDE
 
 If you want to work locally using your own IDE, you can clone this repo and push changes.
 
@@ -25,7 +28,7 @@ Follow these steps:
 git clone <YOUR_GIT_URL>
 
 # Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+cd iykeLib_webbased_Library
 
 # Step 3: Install the necessary dependencies.
 npm i
@@ -34,13 +37,13 @@ npm i
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Edit a file directly in GitHub
 
 - Navigate to the desired file(s).
 - Click the "Edit" button (pencil icon) at the top right of the file view.
 - Make your changes and commit the changes.
 
-**Use GitHub Codespaces**
+### Use GitHub Codespaces
 
 - Navigate to the main page of your repository.
 - Click on the "Code" button (green button) near the top right.
