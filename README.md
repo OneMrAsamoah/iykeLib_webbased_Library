@@ -1,70 +1,89 @@
-# WEB BASED LIBRARY FOR COMPUTING STUDENTS IN GHANA
+# Web-Based Library for Computing Students in Ghana
+# Name_Isaac Adjei
+# Index Number_5211040639
+## Overview
 
-## Project Info
+This project is an online library platform tailored for computing students in Ghana. It serves as a centralized hub for accessing, searching, and managing computing-related resources.
 
-A web-based library platform designed specifically for computing students in Ghana. This project provides an online resource hub for accessing, searching, and managing computing-related materials.
-
-**Project Base Directory:**  
+**Project Directory:**  
 `c:\Users\kee\Desktop\iykeLib_webbased_Library`
 
-## How can I edit this code?
+---
 
-There are several ways to edit and contribute to this application:
+## Getting Started
 
-### Working Locally
+### Prerequisites
 
-Edit the code using your preferred IDE or editor. Changes made locally can be committed and pushed to your remote repository.
+- [Node.js & npm](https://nodejs.org/) (recommended to install via [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
 
-#### Use your preferred IDE
+### Local Development
 
-If you want to work locally using your own IDE, you can clone this repo and push changes.
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/OneMrAsamoah/iykeLib_webbased_Library.git
+   cd iykeLib_webbased_Library
+   ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. **(Optional) Enable PowerShell scripts:**  
+   If scripts are disabled, open PowerShell as Administrator and run:
+   ```sh
+   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+   ```
 
-Follow these steps:
+3. **Install dependencies:**
+   ```sh
+   npm install
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+4. **Start the development server:**
+   ```sh
+   npm run dev
+   ```
+   This enables auto-reloading and instant preview.
 
-# Step 2: Navigate to the project directory.
-cd iykeLib_webbased_Library
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## Contributing
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+You can contribute in several ways:
 
-### Edit a file directly in GitHub
+- **Locally:**  
+  Edit files in your preferred IDE, commit, and push changes.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **Directly on GitHub:**  
+  - Navigate to the file you want to edit.
+  - Click the pencil icon to edit.
+  - Commit your changes.
 
-### Use GitHub Codespaces
+- **Using GitHub Codespaces:**  
+  - Click the "Code" button on the repository page.
+  - Select the "Codespaces" tab.
+  - Click "New codespace" to launch an online development environment.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## Tech Stack
 
-This project is built with:
+- **Vite**
+- **TypeScript**
+- **React**
+- **shadcn-ui**
+- **Tailwind CSS**
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## Deployment
 
-Deploy using your preferred hosting provider (Vercel, Netlify, or a static file host). Build the app with `npm run build` and follow your host's deployment instructions.
+To deploy, use your preferred hosting provider (e.g., Vercel, Netlify, or any static file host):
 
-## Can I connect a custom domain?
+1. Build the app:
+   ```sh
+   npm run build
+   ```
+2. Follow your host's deployment instructions.
 
-Yes. Configure a custom domain through your hosting provider's settings. Refer to their documentation for DNS and SSL setup.
+---
+
+## Custom Domain
+
+You can connect a custom domain through your hosting provider. Refer to their documentation for DNS and SSL configuration.
