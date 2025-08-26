@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iYKELib Library - Open Access Academic Resources</title>
+    <meta name="description" content="Free online library providing computing students in Ghana with access to textbooks, research papers, tutorials, and educational resources. Bridging the knowledge gap in computing education." />
+    <meta name="author" content="iYKELib Library" />
+    <meta name="keywords" content="Ghana, computing, education, library, resources, programming, computer science, students, academic, open access" />
+
+    <meta property="og:title" content="iYKELib Library - Open Access Academic Resources" />
+    <meta property="og:description" content="Free online library providing computing students in Ghana with access to textbooks, research papers, tutorials, and educational resources." />
+    <meta property="og:type" content="website" />
+  <meta property="og:image" content="/public/placeholder.svg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@your_org_or_handle" />
+  <meta name="twitter:image" content="/public/placeholder.svg" />
+  
+  <!-- Theme preload to avoid flash of incorrect theme on first paint -->
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (prefersDark) document.documentElement.classList.add('dark');
+        }
+      } catch (e) {
+        /* ignore */
+      }
+    })();
+  </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

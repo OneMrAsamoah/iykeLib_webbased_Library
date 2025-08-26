@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Test</title>
+</head>
+<body>
+    <h1>Vite Proxy Test</h1>
+    <button onclick="testProxy()">Test Proxy</button>
+    <div id="result"></div>
+
+    <script>
+        async function testProxy() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                // Test relative path (should use proxy)
+                const response = await fetch('/api/test-thumbnail');
+                const data = await response.json();
+                resultDiv.innerHTML = `
+                    <h3>✅ Proxy Working!</h3>
+                    <p>Response: ${JSON.stringify(data, null, 2)}</p>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h3>❌ Proxy Failed!</h3>
+                    <p>Error: ${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Setup Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🔧 API Setup Test</h1>
+    
+    <div class="test-section">
+        <h3>1. Test Vite Proxy</h3>
+        <p>This tests if requests to /api/* are being proxied to localhost:5000</p>
+        <button onclick="testProxy()">Test Proxy</button>
+        <div id="proxy-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>2. Test Thumbnail Generation</h3>
+        <p>This tests the thumbnail generation endpoint</p>
+        <button onclick="testThumbnail()">Test Thumbnail Generation</button>
+        <div id="thumbnail-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>3. Test Direct Backend</h3>
+        <p>This tests direct connection to backend (should fail if proxy is working)</p>
+        <button onclick="testDirectBackend()">Test Direct Backend</button>
+        <div id="direct-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>4. Environment Info</h3>
+        <div id="env-info"></div>
+    </div>
+
+    <script>
+        function showResult(elementId, success, message, data = null) {
+            const element = document.getElementById(elementId);
+            element.className = `test-section ${success ? 'success' : 'error'}`;
+            element.innerHTML = `
+                <h3>${success ? '✅ Success' : '❌ Failed'}</h3>
+                <p>${message}</p>
+                ${data ? `<pre>${JSON.stringify(data, null, 2)}</pre>` : ''}
+            `;
+        }
+
+        async function testProxy() {
+            const resultDiv = document.getElementById('proxy-result');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const response = await fetch('/api/test-thumbnail');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResult('proxy-result', true, 'Proxy is working! Request was forwarded to backend.', data);
+                } else {
+                    showResult('proxy-result', false, `Proxy failed: ${response.status} ${response.statusText}`, data);
+                }
+            } catch (error) {
+                showResult('proxy-result', false, `Proxy error: ${error.message}`);
+            }
+        }
+
+        async function testThumbnail() {
+            const resultDiv = document.getElementById('thumbnail-result');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const response = await fetch('/api/generate-thumbnail', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        filePath: '/uploads/test.pdf',
+                        type: 'pdf'
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    showResult('thumbnail-result', true, 'Thumbnail generation working!', data);
+                } else {
+                    const data = await response.json().catch(() => ({}));
+                    showResult('thumbnail-result', false, `Thumbnail generation failed: ${response.status}`, data);
+                }
+            } catch (error) {
+                showResult('thumbnail-result', false, `Thumbnail generation error: ${error.message}`);
+            }
+        }
+
+        async function testDirectBackend() {
+            const resultDiv = document.getElementById('direct-result');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/test-thumbnail');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResult('direct-result', false, 'Direct backend connection works (proxy not needed)', data);
+                } else {
+                    showResult('direct-result', false, `Direct backend failed: ${response.status}`, data);
+                }
+            } catch (error) {
+                showResult('direct-result', true, 'Direct backend blocked (proxy is working)', { error: error.message });
+            }
+        }
+
+        function showEnvironmentInfo() {
+            const envDiv = document.getElementById('env-info');
+            envDiv.innerHTML = `
+                <h4>Current Environment:</h4>
+                <ul>
+                    <li><strong>Current URL:</strong> ${window.location.href}</li>
+                    <li><strong>Protocol:</strong> ${window.location.protocol}</li>
+                    <li><strong>Host:</strong> ${window.location.host}</li>
+                    <li><strong>Port:</strong> ${window.location.port}</li>
+                    <li><strong>Pathname:</strong> ${window.location.pathname}</li>
+                </ul>
+                <h4>Expected Setup:</h4>
+                <ul>
+                    <li><strong>Frontend:</strong> http://localhost:8080</li>
+                    <li><strong>Backend:</strong> http://localhost:5000</li>
+                    <li><strong>Proxy:</strong> /api/* → localhost:5000</li>
+                </ul>
+            `;
+        }
+
+        // Show environment info on load
+        showEnvironmentInfo();
+    </script>
+</body>
+</html>
