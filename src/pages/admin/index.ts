@@ -1,0 +1,9 @@
+export { default as AdminPanel } from './AdminPanel';
+export { default as Dashboard } from './Dashboard';
+export { default as Categories } from './Categories';
+export { default as Books } from './Books';
+export { default as Tutorials } from './Tutorials';
+export { default as Users } from './Users';
+export { default as Analytics } from './Analytics';
+export { default as ActivityLog } from './ActivityLog';
+export { default as Settings } from './Settings';
